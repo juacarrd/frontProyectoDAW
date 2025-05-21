@@ -1,0 +1,19 @@
+{
+    "folders": [
+		{
+			"path": "../../../../../Users/luso0/OneDrive - Educacyl/Documentos/ApiRestNode-master"
+		},
+		{
+			"path": "../../../../../Users/luso0/OneDrive - Educacyl/Documentos/ClienteWeb"
+		},
+		{
+			"path": "../../../ClienteWeb"
+		},
+		{
+			"path": "../.."
+		}
+	],
+    "settings": {
+        "liveServer.settings.multiRootWorkspaceName": "ClienteWeb"
+    }
+}

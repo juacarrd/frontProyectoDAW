@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de administración</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- CABECERA común -->
+    <header class="bg-light border-bottom mb-4 p-3">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <a href="adminMenu.html">
+                    <img src="../assets/logo-toro.png" alt="Logo Ayuntamiento de Toro" height="50" class="me-3">
+                </a>
+                <h1 class="h5 mb-0">Panel de Administración – Reservas Toro</h1>
+            </div>
+
+            <div id="userIcons" class="d-none">
+                <a href="profile.html" class="me-3 text-decoration-none"><i class="bi bi-person-circle fs-4"></i></a>
+                <a href="#" id="btnLogout" class="text-danger text-decoration-none"><i
+                        class="bi bi-box-arrow-right fs-4"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENIDO -->
+    <main class="container flex-fill">
+        <div class="row g-4 text-center">
+            <div class="col-12 col-md-6">
+                <a href="adminFacilities.html" class="btn btn-outline-primary btn-lg w-100 py-4">
+                    <i class="bi bi-houses-fill fs-3 me-2"></i> Instalaciones
+                </a>
+            </div>
+            <div class="col-12 col-md-6">
+                <a href="adminUsers.html" class="btn btn-outline-secondary btn-lg w-100 py-4">
+                    <i class="bi bi-people-fill fs-3 me-2"></i> Usuarios
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- PIE -->
+    <footer class="bg-dark text-light text-center py-3 mt-4">
+        © 2025 Juan Carrasco — Todos los derechos reservados ·
+        <a href="mailto:juacarrd@gmail.com" class="text-info">juacarrd@gmail.com</a> ·
+        <a href="https://github.com/juacarrd" target="_blank" class="text-info">GitHub</a>
+    </footer>
+
+    <script type="module" src="../controlador/layout.js"></script>
+    <script type="module">
+        import { ensureLoggedIn } from '../controlador/authGuard.js';
+        const user = ensureLoggedIn();
+        if (!user?.admin) window.location.href = 'mainMenu.html';
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

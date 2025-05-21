@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Menú principal - Reservas Toro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css">
+
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+  <header class="bg-light border-bottom mb-4 p-3">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
+        <a href="mainMenu.html">
+          <img src="../assets/logo-toro.png" alt="Logo Ayuntamiento de Toro" height="50" class="me-3">
+        </a>
+        <h1 class="h5 mb-0">Aplicación de Reservas Deportivas – Ayuntamiento de Toro</h1>
+      </div>
+
+      <div id="userIcons" class="d-none">
+        <a href="profile.html" class="me-3 text-decoration-none" title="Perfil">
+          <i class="bi bi-person-circle fs-4"></i>
+        </a>
+        <a href="#" id="btnLogout" title="Cerrar sesión">
+          <i class="bi bi-box-arrow-right fs-4 text-danger"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Navegación principal -->
+    <nav class="mt-3">
+      <ul class="nav nav-pills flex-wrap justify-content-center gap-2">
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-primary" href="mainMenu.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-primary" href="facility.html">Instalaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-primary" href="myBookings.html">Mis reservas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-primary" href="news.html">Noticias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-primary" href="about.html">Acerca de</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+  <main class="container flex-fill">
+
+    <!-- Carrusel multitarjeta con 3 imágenes por slide en desktop -->
+    <!-- Carrusel multitarjeta a pantalla completa -->
+    <div class="container-fluid px-4">
+      <div id="carouselDeporte" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-inner rounded shadow-sm">
+
+          <!-- Primer slide -->
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-12 col-md-4 mb-3 mb-md-0">
+                <a href="facility.html?type=futbol">
+                  <img src="../assets/futbol.jpg" class="carousel-img d-block w-100" alt="Fútbol">
+                </a>
+              </div>
+              <div class="col-12 col-md-4 mb-3 mb-md-0 d-none d-md-block">
+                <a href="facility.html?type=baloncesto">
+                  <img src="../assets/baloncesto.jpg" class="carousel-img d-block w-100" alt="Baloncesto">
+                </a>
+              </div>
+              <div class="col-12 col-md-4 d-none d-md-block">
+                <a href="facility.html?type=tenis">
+                  <img src="../assets/tenis.jpg" class="carousel-img d-block w-100" alt="Tenis">
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Segundo slide -->
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-12 col-md-4 mb-3 mb-md-0">
+                <a href="facility.html?type=padel">
+                  <img src="../assets/padel.jpg" class="carousel-img d-block w-100" alt="Pádel">
+                </a>
+              </div>
+              <div class="col-12 col-md-4 mb-3 mb-md-0 d-none d-md-block">
+                <a href="facility.html?type=piscina">
+                  <img src="../assets/piscina.jpg" class="carousel-img d-block w-100" alt="Piscina">
+                </a>
+              </div>
+              <div class="col-12 col-md-4 d-none d-md-block">
+                <a href="facility.html?type=futbolSala">
+                  <img src="../assets/futbolSala.jpg" class="carousel-img d-block w-100" alt="Fútbol Sala">
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Controles del carrusel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDeporte" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselDeporte" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- Menú principal -->
+    <div class="row g-4 text-center">
+      <div class="col-12 col-md-6">
+        <a href="facility.html" class="btn btn-outline-primary btn-lg w-100 py-3">
+          Ver instalaciones
+        </a>
+      </div>
+      <div class="col-12 col-md-6">
+        <a href="news.html" class="btn btn-outline-success btn-lg w-100 py-3">
+          Noticias
+        </a>
+      </div>
+      <div class="col-12 col-md-6">
+        <a href="myBookings.html" class="btn btn-outline-secondary btn-lg w-100 py-3">
+          Mis reservas
+        </a>
+      </div>
+      <div class="col-12 col-md-6">
+        <a href="about.html" class="btn btn-outline-dark btn-lg w-100 py-3">
+          Acerca de la aplicación
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer común -->
+  <footer class="bg-dark text-light text-center py-3 mt-4">
+    © 2025 Juan Carrasco — Todos los derechos reservados ·
+    <a href="mailto:juacarrd@gmail.com" class="text-info text-decoration-none">juacarrd@gmail.com</a> ·
+    <a href="https://github.com/juacarrd" target="_blank" class="text-info text-decoration-none">GitHub</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<script src="../controlador/layout.js" type="module"></script>
+
+</html>
