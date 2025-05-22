@@ -35,7 +35,7 @@ const inpLng = document.getElementById("lng");
 /* ─── Logout ───────────────────────────────── */
 document.getElementById("btnLogout")?.addEventListener("click", () => {
     localStorage.removeItem("loggedUser");
-    window.location.href = "index.html";
+    window.location.href = "../index.html";
 });
 
 /* ─── Provincias (Zamora por defecto) ──────── */

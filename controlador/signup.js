@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // El servidor no devuelve el token ni el DTO tras registrar,
       // así que pedimos al usuario que inicie sesión
       alert("Usuario registrado correctamente. Inicia sesión.");
-      window.location.href = "index.html";
+      window.location.href = "../index.html";
     } catch (err) {
       console.error("Error en el registro:", err);
       alert("Registro fallido: " + err.message);

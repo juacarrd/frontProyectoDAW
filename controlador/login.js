@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("loggedUser", JSON.stringify(user.toJSON()));
 
       // Redirección condicional
-      window.location.href = user.admin ? "adminMenu.html" : "mainMenu.html";
+      window.location.href = user.admin ? "./vista/adminMenu.html" : "./vista/mainMenu.html";
     } catch (err) {
       console.error(err);
       alert("Inicio de sesión fallido: " + err.message);
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       user.admin = false;  // fuerza explícitamente el flag
       localStorage.setItem("loggedUser", JSON.stringify(user.toJSON()));
 
-      window.location.href = "mainMenu.html";
+      window.location.href = "./vista/mainMenu.html";
     } catch (err) {
       console.error(err);
       alert("Error al iniciar sesión con Google: " + err.message);
