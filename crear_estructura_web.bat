@@ -9,7 +9,7 @@ set "MODELO_DTO=%BASE%\modelo"
 
 :: Si ya existe la carpeta web-client
 if exist %BASE% (
-    echo ✅ Se detecta la carpeta existente "%BASE%", limpiando excepto DTOs...
+    echo Se detecta la carpeta existente "%BASE%", limpiando excepto DTOs...
 
     :: Crear temporal si hay DTOs
     if exist %MODELO_DTO% (
@@ -31,10 +31,10 @@ mkdir %BASE%\vista
 if exist tempDTO (
     copy tempDTO\* %BASE%\modelo\ >nul
     rmdir /s /q tempDTO
-    echo ✅ DTOs restaurados.
+    echo DTOs restaurados.
 )
 
-:: Crear archivos de ejemplo
+:: Crear archivos 
 echo. > %BASE%\vista\login.html
 echo. > %BASE%\vista\signup.html
 echo. > %BASE%\vista\facility.html
@@ -50,5 +50,5 @@ echo. > %BASE%\controlador\ApiService.js
 echo. > %BASE%\controlador\RequestQueueManager.js
 echo. > %BASE%\controlador\QRCodeScanner.js
 
-echo ✅ Nueva estructura MVC generada correctamente en "%BASE%"
+echo Nueva estructura MVC generada correctamente en "%BASE%"
 pause

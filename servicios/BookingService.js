@@ -114,4 +114,18 @@ export class BookingService {
   }
 
 
+  /* ------------------------------------------------------------------------- */
+  /** Actualiza el campo QR de una reserva por su ID.                          *
+   *  @param {string} id      Identificador de reserva                          *
+   *  @param {string} qr      Imagen en base64 del QR                           *
+   *  @param {string} token   JWT                                               */
+  static async updateQrById(id, qr, token) {
+    return ApiService.post(
+      "/api/booking/updateQrById",
+      { _id: id, qr },
+      token
+    );                                     
+  }
+
+
 }

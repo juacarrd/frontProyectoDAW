@@ -2,6 +2,7 @@
 // ------------------------------------------------------------
 // Muestra el detalle de una reserva. Si no ha sido pagada,
 // integra directamente el botón de pago de PayPal.
+// Genera dinámicamente un QR a partir del UID de la reserva.
 // ------------------------------------------------------------
 
 import { ensureLoggedIn } from "./authGuard.js";
@@ -29,15 +30,11 @@ const timeFrom     = document.getElementById("timeFrom");
 const timeTo       = document.getElementById("timeTo");
 const paidStatus   = document.getElementById("paidStatus");
 const btnPay       = document.getElementById("btnPay");
-const qrLink       = document.getElementById("qrLink");
+const canvas       = document.getElementById("qrCanvas");
 
 /* ─────────── Carga inicial de datos ─────────── */
 loadBooking();
 
-/**
- * Carga y presenta los datos de la reserva.
- * Muestra el botón de PayPal si no está pagada.
- */
 async function loadBooking() {
   try {
     const res = await BookingService.getById(bookingId, token);
@@ -68,21 +65,36 @@ async function loadBooking() {
     timeFrom.textContent     = fromDate.getHours() + ":00";
     timeTo.textContent       = toDate.getHours() + ":00";
     paidStatus.textContent   = booking.paid ? "Sí" : "No";
-    qrLink.href = `qr.html?id=${bookingId}`;
 
-    // Inserta el contenedor de PayPal justo debajo del botón de pago
+    // ───── Generar QR dinámicamente desde UID ─────
+    if (canvas) {
+      try {
+        const qr = new QRious({
+          value: booking.uid,
+          size: 220,
+        });
+
+        const ctx = canvas.getContext("2d");
+        const img = new Image();
+        img.onload = () => ctx.drawImage(img, 0, 0);
+        img.src = qr.toDataURL();
+        canvas.classList.remove("d-none");
+      } catch (err) {
+        console.error("Error al generar/mostrar el QR:", err);
+      }
+    }
+
+    // PayPal
     const paypalContainer = document.createElement("div");
     paypalContainer.id = "paypal-button-container";
     btnPay.insertAdjacentElement("afterend", paypalContainer);
 
     if (booking.paid) {
-      // Si ya está pagado, mostrar botón desactivado con tooltip
       btnPay.disabled = true;
       btnPay.classList.add("btn-secondary");
       btnPay.textContent = "Pagado";
       btnPay.title = "El pago ya ha sido realizado";
     } else {
-      // Si no está pagado, ocultar el botón tradicional y mostrar directamente PayPal
       btnPay.style.display = "none";
       renderPayPalButton(booking);
     }
@@ -96,12 +108,9 @@ async function loadBooking() {
 
 /**
  * Renderiza el botón de pago de PayPal y gestiona el proceso.
- * Al confirmar el pago, actualiza el estado en la base de datos.
- * 
- * @param {object} booking Objeto de reserva
  */
 async function renderPayPalButton(booking) {
-  const price = 5.00; // Precio fijo para la reserva
+  const price = 5.00;
 
   if (!window.paypal) {
     alert("El servicio de PayPal no se ha cargado correctamente.");
@@ -112,9 +121,7 @@ async function renderPayPalButton(booking) {
     createOrder: (data, actions) => {
       return actions.order.create({
         purchase_units: [{
-          amount: {
-            value: price.toFixed(2)
-          },
+          amount: { value: price.toFixed(2) },
           description: `Reserva: ${booking.facilityName}`
         }]
       });
