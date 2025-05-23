@@ -28,7 +28,7 @@ document.getElementById("btnDeleteAccount").addEventListener("click", async () =
     // Eliminar sesión local y redirigir
     localStorage.removeItem("loggedUser");
     alert("Tu cuenta ha sido eliminada correctamente.");
-    window.location.href = "index.html";
+    window.location.href = "../index.html";
   } catch (err) {
     console.error(err);
     alert("Error al eliminar la cuenta. Inténtalo de nuevo más tarde.");

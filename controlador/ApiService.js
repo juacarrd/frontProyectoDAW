@@ -8,7 +8,7 @@
  */
 export class ApiService {
   /** Cambia la IP/puerto aquí si el backend se mueve. */
-  static BASE_URL = "http://35.178.200.121";
+  static BASE_URL = "https://api.juacarrd.es";
 
   /* ------------------------------------------------------------ */
   /** Construye las cabeceras correctamente formateadas. */

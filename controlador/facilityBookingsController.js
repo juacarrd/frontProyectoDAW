@@ -1,4 +1,3 @@
-// controlador/facilityBookingsController.js
 import { ensureLoggedIn } from "./authGuard.js";
 import { BookingService } from "../servicios/BookingService.js";
 import { FacilityService } from "../servicios/FacilityService.js";
@@ -32,7 +31,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-/** Muestra un mensaje flotante que se desvanece solo (Bootstrap 5) */
 function flash(msg, type = "success") {
     const id = "id_" + Date.now();
     const html = `
@@ -42,13 +40,11 @@ function flash(msg, type = "success") {
     </div>`;
     const cont = document.getElementById("flashContainer");
     cont.insertAdjacentHTML("beforeend", html);
-    // Se desvanece solo a los 4 s
     setTimeout(() => {
         const el = document.getElementById(id);
         if (el) bootstrap.Alert.getOrCreateInstance(el).close();
     }, 4000);
 }
-
 
 function fmt(ts) {
     return new Date(ts).toLocaleString("es-ES");
@@ -62,6 +58,9 @@ function render(reservas) {
     reservas.forEach(r => {
         const li = document.createElement("li");
         li.className = "list-group-item";
+
+        const estado = r.checked ? "Sí" : "No";
+
         li.innerHTML = `
       <article class="d-flex justify-content-between flex-wrap gap-3">
         <section class="flex-grow-1">
@@ -69,7 +68,8 @@ function render(reservas) {
             <strong>Tipo:</strong> ${FacilityTypesReverse[r.type]}<br>
             <strong>Desde:</strong> ${fmt(r.timeFrom)}<br>
             <strong>Hasta:</strong> ${fmt(r.timeTo)}<br>
-            <strong>Pagado:</strong> ${r.paid ? "Sí" : "No"}
+            <strong>Pagado:</strong> ${r.paid ? "Sí" : "No"}<br>
+            <strong>Acudió:</strong> ${estado}
           </p>
         </section>
         <button class="btn p-0 text-danger fs-5 align-self-center"
@@ -78,7 +78,7 @@ function render(reservas) {
         </button>
       </article>`;
 
-        li.querySelector("button").addEventListener("click", async () => {
+        li.querySelector(".bi-trash").parentElement.addEventListener("click", async () => {
             if (!confirm("¿Eliminar esta reserva?")) return;
             try {
                 await BookingService.deleteById({ _id: r._id }, token);

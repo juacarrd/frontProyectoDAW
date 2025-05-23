@@ -124,8 +124,21 @@ export class BookingService {
       "/api/booking/updateQrById",
       { _id: id, qr },
       token
-    );                                     
+    );
   }
+
+  static async updateCheckedById(data, token) {
+    const res = await fetch(`${this.BASE_URL}/api/booking/updateCheckedById`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token
+      },
+      body: JSON.stringify(data)
+    });
+    return await res.json();
+  }
+
 
 
 }

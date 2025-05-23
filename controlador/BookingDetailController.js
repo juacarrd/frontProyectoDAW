@@ -23,14 +23,15 @@ if (!bookingId) {
 }
 
 /* ─────────── Referencias a elementos del DOM ─────────── */
-const facilityName = document.getElementById("facilityName");
-const facilityType = document.getElementById("facilityType");
-const bookingDate  = document.getElementById("bookingDate");
-const timeFrom     = document.getElementById("timeFrom");
-const timeTo       = document.getElementById("timeTo");
-const paidStatus   = document.getElementById("paidStatus");
-const btnPay       = document.getElementById("btnPay");
-const canvas       = document.getElementById("qrCanvas");
+const facilityName   = document.getElementById("facilityName");
+const facilityType   = document.getElementById("facilityType");
+const bookingDate    = document.getElementById("bookingDate");
+const timeFrom       = document.getElementById("timeFrom");
+const timeTo         = document.getElementById("timeTo");
+const paidStatus     = document.getElementById("paidStatus");
+const checkedStatus  = document.getElementById("checkedStatus");
+const btnPay         = document.getElementById("btnPay");
+const canvas         = document.getElementById("qrCanvas");
 
 /* ─────────── Carga inicial de datos ─────────── */
 loadBooking();
@@ -59,12 +60,13 @@ async function loadBooking() {
     const fromDate = new Date(booking.timeFrom);
     const toDate   = new Date(booking.timeTo);
 
-    facilityName.textContent = booking.facilityName;
-    facilityType.textContent = typeName;
-    bookingDate.textContent  = fromDate.toLocaleDateString();
-    timeFrom.textContent     = fromDate.getHours() + ":00";
-    timeTo.textContent       = toDate.getHours() + ":00";
-    paidStatus.textContent   = booking.paid ? "Sí" : "No";
+    facilityName.textContent  = booking.facilityName;
+    facilityType.textContent  = typeName;
+    bookingDate.textContent   = fromDate.toLocaleDateString();
+    timeFrom.textContent      = fromDate.getHours() + ":00";
+    timeTo.textContent        = toDate.getHours() + ":00";
+    paidStatus.textContent    = booking.paid ? "Sí" : "No";
+    checkedStatus.textContent = booking.checked ? "Sí" : "No";
 
     // ───── Generar QR dinámicamente desde UID ─────
     if (canvas) {
